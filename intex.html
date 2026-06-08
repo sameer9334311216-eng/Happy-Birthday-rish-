@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Rishu 🎂</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  overflow:hidden;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd6e0);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.container{
+  padding:20px;
+  z-index:2;
+  max-width:700px;
+}
+
+h1{
+  color:white;
+  font-size:3rem;
+  text-shadow:0 0 15px rgba(255,255,255,.8);
+}
+
+.subtitle{
+  color:white;
+  margin-top:10px;
+  font-size:1.2rem;
+}
+
+#countdown{
+  margin-top:20px;
+  color:white;
+  font-size:1.5rem;
+  font-weight:bold;
+}
+
+.message{
+  margin-top:20px;
+  color:white;
+  line-height:1.8;
+  font-size:1.1rem;
+}
+
+button{
+  margin-top:25px;
+  padding:14px 28px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#ff4081;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:1rem;
+}
+
+button:hover{
+  transform:scale(1.08);
+}
+
+.hidden{
+  display:none;
+}
+
+.surprise{
+  margin-top:20px;
+  color:white;
+  font-size:1.3rem;
+  animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.05);}
+}
+
+.heart{
+  position:absolute;
+  color:white;
+  font-size:25px;
+  animation:float 10s linear infinite;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(100vh);
+  }
+  to{
+    transform:translateY(-120px);
+  }
+}
+
+.cake{
+  font-size:80px;
+  margin-top:20px;
+  animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+  50%{transform:translateY(-10px);}
+}
+
+@media(max-width:600px){
+  h1{
+    font-size:2.2rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>🎂 Happy Birthday Rishu 🎂</h1>
+
+  <p class="subtitle">10 June — A Day Full of Happiness 💖</p>
+
+  <div id="countdown"></div>
+
+  <div class="cake">🎂</div>
+
+  <p class="message">
+    Dear Rishu,<br><br>
+    Thank you for being such a wonderful friend.
+    May your birthday be filled with happiness, laughter,
+    success and unforgettable memories.
+    You deserve all the joy in the world. 🌸✨
+  </p>
+
+  <button onclick="showMessage()">Open Your Surprise 🎁</button>
+
+  <div id="surprise" class="hidden surprise">
+    💕 Rishu, you are an amazing friend and a wonderful person. Happy Birthday! 🎉✨
+  </div>
+
+</div>
+
+<script>
+function showMessage(){
+  document.getElementById("surprise").classList.remove("hidden");
+}
+
+function updateCountdown(){
+  const birthday = new Date("June 10, 2026 00:00:00").getTime();
+  const now = new Date().getTime();
+  const distance = birthday - now;
+
+  if(distance <= 0){
+    document.getElementById("countdown").innerHTML =
+    "🎉 It's Rishu's Birthday Today! 🎉";
+    return;
+  }
+
+  const days = Math.floor(distance/(1000*60*60*24));
+  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const mins = Math.floor((distance%(1000*60*60))/(1000*60));
+
+  document.getElementById("countdown").innerHTML =
+  `⏳ ${days} Days ${hours} Hours ${mins} Minutes Left`;
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+for(let i=0;i<35;i++){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="💖";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(6+Math.random()*8)+"s";
+  heart.style.fontSize=(15+Math.random()*25)+"px";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
